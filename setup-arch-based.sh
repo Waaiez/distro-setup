@@ -19,23 +19,30 @@ echo ""
 #   Install any packages
 # ----------------------
 echo -e "${BLUE}Installing your packages${NC}"
-local packages="discord nodejs npm nvm yay"
-pacman -Sy --noconfirm $packages
+repo_packages="discord nodejs npm nvm yay unzip"
+sudo pacman -Sy --noconfirm $repo_packages
 echo ""
 
 # -------------------------
 #   Update any  aur package
 # -------------------------
 echo -e "${BLUE}Updating any aur packages${NC}"
-sudo yay -Syu
+yay -Syu
 echo ""
 
 # ----------------------
 #   Install aur packages
 # ----------------------
 echo -e "${BLUE}Installing your aur packages${NC}"
-local aurpackages="firefox-beta-bin gitkraken google-chrome mailspring postman-bin spotify spotify-adblock-linux trilium-bin visual-studio-code-bin"
-yay -S --noconfirm $aurpackages
+yay -S --noconfirm firefox-beta-bin
+yay -S --noconfirm gitkraken
+yay -S --noconfirm google-chrome
+yay -S --noconfirm mailspring
+yay -S --noconfirm postman-bin
+yay -S --noconfirm spotify
+yay -S --noconfirm spotify-adblock-linux
+yay -S --noconfirm trilium-bin
+yay -S --noconfirm visual-studio-code-bin
 echo ""
 
 # ------------------
@@ -80,6 +87,10 @@ echo ""
 # --------------
 #   Install Kite
 # --------------
+echo -e "${BLUE}Currently in: `pwd`${NC}"
+echo -e "${BLUE}Changing into Home directory${NC}"
+cd $HOME
+echo -e "${BLUE}Currently in: `pwd`${NC}"
 echo -e "${BLUE}Running command to install Kite${NC}"
 bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
 echo ""
@@ -87,6 +98,11 @@ echo ""
 # ---------------------------
 #   Install VSCode extensions
 # ---------------------------
+echo -e "${BLUE}Currently in: `pwd`${NC}"
+echo -e "${BLUE}Changing into distro-setup directory${NC}"
+cd $HOME
+cd distro-setup
+echo -e "${BLUE}Currently in: `pwd`${NC}"
 echo -e "${BLUE}Installing Visual Studio Code extensions${NC}"
 while read line; do code --install-extension "$line";done < vscode-extensions.txt
 echo ""
