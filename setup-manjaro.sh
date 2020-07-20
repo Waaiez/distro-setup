@@ -8,31 +8,31 @@ NC="\033[0m"
 
 #echo -e "${BLUE}${NC}"
 
-# ---------------------
-#   Update any packages
-# ---------------------
+# --------------------------
+#   Update existing packages
+# --------------------------
 echo -e "${BLUE}Updating any packages${NC}"
 sudo pacman -Syu --noconfirm
 echo ""
 
-# ----------------------
-#   Install any packages
-# ----------------------
+# -------------------------------------------------
+#   Install packages from the official Manjaro repo
+# -------------------------------------------------
 echo -e "${BLUE}Installing your packages${NC}"
 repo_packages="discord nodejs npm nvm yay unzip"
 sudo pacman -Sy --noconfirm $repo_packages
 echo ""
 
 # -------------------------
-#   Update any  aur package
+#   Update any aur packages
 # -------------------------
 echo -e "${BLUE}Updating any aur packages${NC}"
 yay -Syu
 echo ""
 
-# ----------------------
-#   Install aur packages
-# ----------------------
+# ---------------------------
+#   Install packages from aur
+# ---------------------------
 echo -e "${BLUE}Installing your aur packages${NC}"
 yay -S --noconfirm firefox-beta-bin
 yay -S --noconfirm gitkraken
@@ -45,9 +45,10 @@ yay -S --noconfirm trilium-bin
 yay -S --noconfirm visual-studio-code-bin
 echo ""
 
-# ------------------
-#   Setting up fonts
-# ------------------
+# --------------
+#   Set up fonts
+# --------------
+echo -e "${BLUE}Setting up your fonts${NC}"
 if [ $HOME != $PWD ]
 then
     echo "Currently in: `pwd`"
